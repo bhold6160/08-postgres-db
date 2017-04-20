@@ -90,7 +90,8 @@ app.post('/articles', function(request, response) {
 app.put('/articles/:id', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here..
-//  /* The corresponding numbers are 2, 3, 4, and 5. Here we are editing an existing article that is input by the user and updating the website with the new article.  This is interacting with the Article.prototype.updateRecord method on line 88 in article.js.  This is the Update in CRUD.  */
+
+ /* The corresponding numbers are 2, 3, 4, and 5. Here we are editing an existing article that is input by the user and updating the website with the new article.  This is interacting with the Article.prototype.updateRecord method on line 88 in article.js.  This is the Update in CRUD.  */
 
   .
   client.query(
@@ -120,6 +121,7 @@ app.put('/articles/:id', function(request, response) {
 app.delete('/articles/:id', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+
   /*This corresponds to 2, 3, 4, and 5 of the diagram.  This is deleting a specific section of an article by ID from the database and website.  This is interacting with the Article.prototype.deleteRecord method on line 77 in article.js.  This is Delete in CRUD*/
   client.query(
     `DELETE FROM articles WHERE article_id=$1;`,
@@ -136,6 +138,7 @@ app.delete('/articles/:id', function(request, response) {
 app.delete('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+
   /*This corresponds to 2, 3, 4, and 5 of the diagram.  This is deleting an entire article from the database and website.  This is interacting with the Article.prototype.deleteRecord method on line 77 in article.js.  This is Delete in CRUD*/
   client.query(
     'DELETE FROM articles;'
@@ -150,6 +153,8 @@ app.delete('/articles', function(request, response) {
 
 // COMMENT: What is this function invocation doing?
 // Put your response here...
+
+/*This function is invoking the method to create the database on our server*/
 loadDB();
 
 app.listen(PORT, function() {
@@ -162,6 +167,7 @@ app.listen(PORT, function() {
 function loadArticles() {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+
   /*This method corresponds to 2, 3, 4, and 5 in the diagram, and is querying the client to see if any articles are loaded in the database, if they are not it loads them, if they are it sends the data to the server.  This is interacting with the Article.fetchAll method in article.js.  This is Create and Read in CRUD*/
   client.query('SELECT COUNT(*) FROM articles')
   .then(result => {
@@ -189,6 +195,7 @@ function loadArticles() {
 function loadDB() {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+
   /*This function corresponds to 3 and 4, if no database exists it will create a table to be populated by articles.  This is not interacting with the article.js, it is strictly back-end.  This is the Create and Read in CRUD*/
   client.query(`
     CREATE TABLE IF NOT EXISTS articles (
